@@ -6,13 +6,8 @@
     box-sizing: border-box;
   }
 
-  img{
-    width: 50%;
-    border-radius: 100%;
-  }
-
   body{
-    background-color: rgba(8, 88, 141, 0.445);
+    background-color: #18181b;
   }
   
   header{
@@ -24,9 +19,33 @@
     width: 100%;
   }
 
-  .imagenesMain{
-    padding-left: 5vh;
-    padding-top: 5vh;
-    display: flex;
-    gap: 50px;
+  .contenedor-productos{
+    display: grid;
+    border: 2px solid transparent;
+    border-radius: 15px;
+    padding: 1rem;
+    gap: 2rem;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+ .jordans-cards{
+  background-color: #27272a;
+  padding: 1rem;
+  border: 2px solid transparent;
+  border-radius: 15px;
+  transition: all 0.3s ease;
+ }
+
+  .img-jordans{
+    width: 100%;
+    aspect-ratio: 3/2;
+    object-fit: contain;
+    justify-content: center;
+  }
+  
+  span{
+    display: inline-block;
+    background-color: #948c47;
+    padding: 2px 9px;
+    border-radius: 5px;
   }
