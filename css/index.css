@@ -1,0 +1,32 @@
+* {
+    margin: 0;
+    padding: 0;
+    outline: none;
+    border: none;
+    box-sizing: border-box;
+  }
+
+  img{
+    width: 50%;
+    border-radius: 100%;
+  }
+
+  body{
+    background-color: rgba(8, 88, 141, 0.445);
+  }
+  
+  header{
+    background-color: rgba(8, 88, 141, 0.63);
+  }
+
+  /* CODIGO */
+  .tituloPrincipal{
+    width: 100%;
+  }
+
+  .imagenesMain{
+    padding-left: 5vh;
+    padding-top: 5vh;
+    display: flex;
+    gap: 50px;
+  }
