@@ -1,0 +1,11 @@
+ // Función para actualizar las tarjetas de Jordans
+
+//  function updateJordanCards() {
+//      // Elimina las cards existentes antes de agregar las nuevas
+//      jordansList.innerHTML = '';
+ 
+//      jordansData.forEach(jordan => {
+//          const card = createJordanCard(jordan);
+//          jordansList.appendChild(card);
+//      });
+//  }

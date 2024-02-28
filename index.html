@@ -22,168 +22,36 @@
         <div class="tituloPrincipal">
             <h1>PAGINA PRINCIPAL</h1>
         </div>
+
+         <!-- Añade estos elementos para la búsqueda y filtros -->
+         <div class="filters">
+            <input type="text" id="search-bar" placeholder="Buscar por nombre">
+            <button id="filter-low" class="filter-btn">Precios Bajos</button>
+            <button id="filter-high" class="filter-btn">Precios Altos</button>
+            <button class="btn btn-secondary" id="filter-shipping">Envío País</button>
+
+            <select id="filter-gender">
+                <option value="Todos">Todos</option>
+                <option value="hombre">Hombre</option>
+                <option value="mujer">Mujer</option>
+                <option value="unisex">Unisex</option>
+            </select>
+            
+        </div>
     
         <div class="compras">
             <h1 class="letraCompras">Carrito de Compras</h1>
     
             <p class="txtCompra">Cantidad de zapatillas en el carrito: <span id="cantidad-zapatillas">0</span></p>
-    
-            <div id="carrito-info"></div>
         </div>
     </header>
 <!-- FINALIZADO DE HEADER -->
 
 <!-- COMIENZO DE MAIN -->
-    <main>
-        <div class="contenedor-productos">
-            <div class="jordans-cards">
-                
-                    <img class="img-jordans" src="./images/jordan.jpg" alt="">
-                    <li>
-                        Jordans 1
-                    </li>
-                    <p class="card-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p>
-
-                <button class="btnCompra">
-                    <p>Comprar</p>
-                </button>
-            </div>
-
-            <div class="jordans-cards">
-                
-                    <img class="img-jordans" src="./images/jord2.jpg" alt="">
-                    <li>
-                        Jordans 2
-                    </li>
-                    <p class="card-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p>
-                    <button class="btnCompra">
-                        <p>Comprar</p>
-                    </button>
-            </div>
-
-            <div class="jordans-cards">
-                
-                    <img class="img-jordans" src="./images/jord3.jpg" alt="">
-                    <li>
-                        Jordans 3
-                    </li>
-                    <p class="card-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p>
-                    <button class="btnCompra">
-                        <p>Comprar</p>
-                    </button>
-            </div>
-
-            <div class="jordans-cards">
-                
-                    <img class="img-jordans" src="./images/jord4.jpg" alt="">
-                    <li>
-                        Jordans 4
-                    </li>
-                    <p class="card-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p>
-                    <button class="btnCompra">
-                        <p>Comprar</p>
-                    </button>
-            </div>
-
-            <div class="jordans-cards">
-                
-                    <img class="img-jordans" src="./images/jord5.jpg" alt="">
-                    <li>
-                        Jordans 5
-                    </li>
-                    <p class="card-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p>
-                    <button class="btnCompra">
-                        <p>Comprar</p>
-                    </button>
-            </div>
-
-            <div class="jordans-cards">
-                
-                    <img class="img-jordans" src="./images/jord6.jpg" alt="">
-                    <li>
-                        Jordans 6
-                    </li>
-                    <p class="card-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p>
-                    <button class="btnCompra">
-                        <p>Comprar</p>
-                    </button>
-            </div>
-
-            <div class="jordans-cards">
-                
-                    <img class="img-jordans" src="./images/jord7.jpg" alt="">
-                    <li>
-                        Jordans 7
-                    </li>
-                    <p class="card-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p>
-                    <button class="btnCompra">
-                        <p>Comprar</p>
-                    </button>
-            </div>
-
-            <div class="jordans-cards">
-                
-                    <img class="img-jordans" src="./images/jord1fem.jpg" alt="">
-                    <li>
-                        Jordans 8
-                    </li>
-                    <p class="card-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p>
-                    <button class="btnCompra">
-                        <p>Comprar</p>
-                    </button>
-            </div>
-
-            <div class="jordans-cards">
-                
-                    <img class="img-jordans" src="./images/jord2fem.jpg" alt="">
-                    <li>
-                        Jordans 9
-                    </li>
-                    <p class="card-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p>
-                    <button class="btnCompra">
-                        <p>Comprar</p>
-                    </button>
-            </div>
-
-            <div class="jordans-cards">
-                
-                    <img class="img-jordans" src="./images/jord3fem.jpg" alt="">
-                    <li>
-                        
-                            Jordans 10
-                        
-                    </li>
-                    <p class="card-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p>
-                    <button class="btnCompra">
-                        <p>Comprar</p>
-                    </button>
-                </div>
-            
-
-            <div class="jordans-cards">
-                
-                    <img class="img-jordans" src="./images/jord4fem.jpg" alt="">
-                    <li>
-                        Jordans 11
-                    </li>
-                    <p class="card-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p>
-                    <button class="btnCompra">
-                        <p>Comprar</p>
-                    </button>
-            </div>
-
-            <div class="jordans-cards">
-                
-                    <img class="img-jordans" src="./images/nike.jpg" alt="">
-                    <li>
-                        Jordans 12
-                    </li>
-                    <p class="card-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p>
-                    <button class="btnCompra">
-                        <p>Comprar</p>
-                    </button>
-            </div>
-        </div>   
+    <main>        
+        <div id="jordans-list" class="contenedor-productos">
+                <button id="load-json-btn">Cargar JSON</button>
+        </div> 
 </main>
 <!-- FINALIZADO DE MAIN -->
 
