@@ -1,13 +1,13 @@
 [
-    { "nombre": "Jordan 1 - F","sexo": "Femenino", "precio": 225000, "enviosPais": true, "imagen": "jord1fem.jpg" },
+    { "nombre": "Jordan 1 - F","sexo": "Femenino", "precio": 225000, "enviosPais": "true", "imagen": "jord1fem.jpg" },
     { "nombre": "Jordan 2", "sexo": "Masculino","precio": 550000, "enviosPais": false, "imagen": "jord2.jpg" },
-    { "nombre": "Jordan 2 - F","sexo": "Femenino","precio": 450000, "enviosPais": true, "imagen": "jord2fem.jpg" },
-    { "nombre": "Jordan 3", "sexo": "Unisex","precio": 320000, "enviosPais": true, "imagen": "jord3.jpg" },
+    { "nombre": "Jordan 2 - F","sexo": "Femenino","precio": 450000, "enviosPais": "true", "imagen": "jord2fem.jpg" },
+    { "nombre": "Jordan 3", "sexo": "Unisex","precio": 320000, "enviosPais": "true", "imagen": "jord3.jpg" },
     { "nombre": "Jordan 3 - F", "sexo": "Femenino","precio": 250000, "enviosPais": false, "imagen": "jord3fem.jpg" },
-    { "nombre": "Jordan 4", "sexo": "Masculino","precio": 150000, "enviosPais": true, "imagen": "jord4.jpg" },
+    { "nombre": "Jordan 4", "sexo": "Masculino","precio": 150000, "enviosPais": "true", "imagen": "jord4.jpg" },
     { "nombre": "Jordan 4 - F", "sexo": "Femenino","precio": 250000, "enviosPais": false, "imagen": "jord4fem.jpg" },
-    { "nombre": "Jordan 5", "sexo": "Unisex","precio": 650000, "enviosPais": true, "imagen": "jord5.jpg" },
+    { "nombre": "Jordan 5", "sexo": "Unisex","precio": 650000, "enviosPais": "true", "imagen": "jord5.jpg" },
     { "nombre": "Jordan 6", "sexo": "Unisex","precio": 750000, "enviosPais": false, "imagen": "jord6.jpg" },
-    { "nombre": "Jordan 7", "sexo": "Unisex","precio": 675000, "enviosPais": true, "imagen": "jord7.jpg" },
-    { "nombre": "Jordan AIR", "sexo": "Masculino","precio": 500000, "enviosPais": true, "imagen": "jordan.jpg" }
+    { "nombre": "Jordan 7", "sexo": "Unisex","precio": 675000, "enviosPais": "true", "imagen": "jord7.jpg" },
+    { "nombre": "Jordan AIR", "sexo": "Masculino","precio": 500000, "enviosPais": "true", "imagen": "jordan.jpg" }
 ]

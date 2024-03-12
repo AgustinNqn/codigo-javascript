@@ -1,17 +1,30 @@
  // Elementos del DOM y otras variables globales
  const cantidadZapatillas = document.getElementById('cantidad-zapatillas');
  const searchBar = document.getElementById('search-bar');
- const filterLowBtn = document.getElementById('filter-low');
- const filterHighBtn = document.getElementById('filter-high');
- const filterGenderDropdown = document.getElementById('filter-gender');
- const filterShippingCheckbox = document.getElementById('filter-shipping');
- const machoAlfa = document.getElementById('hombre');
+ const enviosPais = document.getElementById('envios');
+ const macho = document.getElementById('hombre');
+ const mujer = document.getElementById('mujer');
+ const unisex = document.getElementById('unisex')
 
-
-machoAlfa.addEventListener('click', () =>{
+macho.addEventListener('click', () =>{
     const valor = 'Masculino';
     renderJordan(valor);
     
+})
+
+mujer.addEventListener('click', () =>{
+    const valor = 'Femenino';
+    renderJordan(valor);
+})
+
+unisex.addEventListener('click', () =>{
+    const valor = 'Unisex';
+    renderJordan(valor);
+})
+
+enviosPais.addEventListener('click', () =>{
+    const valor = "true";
+    renderJordan(valor);
 })
 
  searchBar.addEventListener('keyup', ()=>{
@@ -128,7 +141,7 @@ const cargarJsonData = async () => {
 };
 
 // Función para crear una tarjeta de Jordan
-const renderJordan = async (filter="") => {
+const renderJordan = async (filter = "") => {
     // Guardar info json
     const dataFetch = await cargarJsonData();
     const jordansList = document.getElementById('jordans-list');
@@ -136,35 +149,36 @@ const renderJordan = async (filter="") => {
     jordansList.innerHTML = '';
 
     dataFetch.forEach((item) => {
-        if(item.nombre.toLowerCase().includes(filter)){
-            jordansList.innerHTML += 
-            `
+        const lowerCaseFilter = filter.toLowerCase();
+        if ((item.nombre.toLowerCase().includes(lowerCaseFilter)) ||
+            (item.sexo.toLowerCase() === lowerCaseFilter) ||
+            (item.enviosPais && lowerCaseFilter === "true")) {
+                
+
+            jordansList.innerHTML +=
+                `
                 <h2>${item.nombre}</h2>
                 <img class="img-jordans" src="./images/${item.imagen}" alt="${item.nombre}">
                 <div class="jordans-info">
                     <p>Precio: $${item.precio}</p>
                 </div>
-                <button class="btnCompra">
+                <button class="btnCompra" id="botonCompra">
                     <p>Comprar</p>
                 </button>
-            `
+            `;
+            const botonCompra = jordansList.querySelectorAll('.btnCompra');
+            let contador = 0;
+                    botonCompra.forEach((btn) =>{
+                        btn.addEventListener('click', () => {
+                            contador ++;
+                            cantidadZapatillas.textContent = contador;
+                        });
+                    } ) 
+                        
         }
-        else if(item.sexo.toLowerCase()===filter){
-            jordansList.innerHTML += 
-            `
-                <h2>${item.nombre}</h2>
-                <img class="img-jordans" src="./images/${item.imagen}" alt="${item.nombre}">
-                <div class="jordans-info">
-                    <p>Precio: $${item.precio}</p>
-                </div>
-                <button class="btnCompra">
-                    <p>Comprar</p>
-                </button>
-            `
-        }
-        ;
     });
 };
+
 
 searchBar.addEventListener('keyup', (event)=>{
     if(event.key === 'Enter'){
