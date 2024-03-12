@@ -1,12 +1,23 @@
  // Elementos del DOM y otras variables globales
- const loadJsonBtn = document.getElementById('load-json-btn');
- const jordansList = document.getElementById('jordans-list');
  const cantidadZapatillas = document.getElementById('cantidad-zapatillas');
  const searchBar = document.getElementById('search-bar');
  const filterLowBtn = document.getElementById('filter-low');
  const filterHighBtn = document.getElementById('filter-high');
  const filterGenderDropdown = document.getElementById('filter-gender');
  const filterShippingCheckbox = document.getElementById('filter-shipping');
+ const machoAlfa = document.getElementById('hombre');
+
+
+machoAlfa.addEventListener('click', () =>{
+    const valor = 'Masculino';
+    renderJordan(valor);
+    
+})
+
+ searchBar.addEventListener('keyup', ()=>{
+    const value= searchBar.value.toLowerCase();
+    console.log(value)
+ })
  
  let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
  let jordansData = [];
@@ -15,58 +26,27 @@
  // Variable para evitar el bucle
  let initialDataLoaded = false;
  
- // Evento para cargar datos desde JSON
- document.getElementById('load-json-btn').addEventListener('click', () => {
-     loadJsonData();3
- });
- 
- // Evento para el menú desplegable de categorías
- document.getElementById('filter-gender').addEventListener('click', (event) => {
-     const selectedCategory = event.target.id;
-        console.log(selectedCategory);
-     switch (selectedCategory) {
-         case 'filter-men':
-             filterByCategory('hombre');
-             break;
-         case 'filter-women':
-             filterByCategory('mujer');
-             break;
-         case 'filter-unisex':
-             filterByCategory('unisex');
-             break;
- 
-         default:
-             break;
-     }
- });
- 
- // Evento para cargar datos desde JSON
- loadJsonBtn.addEventListener('click', () => {
-     loadJsonData();
- });
+      
  
  // Función para actualizar las tarjetas de Jordans con filtros aplicados
- function updateJordanCards() {
-    console.log('Updating Jordan cards');
-
-
-     jordansList.innerHTML = '';
+//  function updateJordanCards() {
+//      jordansList.innerHTML = '';
  
-     const filteredJordans = applyFilters(jordansData);
+//      const filteredJordans = applyFilters(jordansData);
      
-     filteredJordans.forEach(jordan => {
-         const card = createJordanCard(jordan);
-         jordansList.appendChild(card);
-     });
- }
+//      filteredJordans.forEach(jordan => {
+//          const card = createJordanCard(jordan);
+//          jordansList.appendChild(card);
+//      });
+//  }
  
  
  
  function applyFilters(data) {
-    const searchQuery = searchBar.value.toLowerCase();
+    const searchQuery = searchBar.value ? searchBar.value.toLowerCase() : '';
     const filterLow = filterLowBtn.classList.contains('active');
     const filterHigh = filterHighBtn.classList.contains('active');
-    const selectedGender = filterGenderDropdown.value;
+    const selectedGender = filterGenderDropdown.value ? filterGenderDropdown.value.toString().toLowerCase() : '';
     const filterShipping = filterShippingCheckbox.checked;
 
     const lowerCaseSearchQuery = searchQuery.toLowerCase();
@@ -81,100 +61,123 @@
     
         const meetsShippingCriteria = !filterShipping || (filterShipping && jordan.enviosPais);
 
-        console.log(data); // Verifica que los datos estén presentes
-        console.log(searchQuery, filterLow, filterHigh, selectedGender, filterShipping); // Verifica los valores de los filtros
-        console.log(meetsSearchCriteria, meetsPriceCriteria, meetsGenderCriteria, meetsShippingCriteria); // Verifica los resultados de las condiciones
-
-
         // Muestra la zapatilla si cumple al menos una condición
         return meetsSearchCriteria || meetsPriceCriteria || meetsGenderCriteria || meetsShippingCriteria;
         
     });
 }
  
- 
+ function precios(){
+
  // Agrega eventos a los elementos de filtro
- if (filterLowBtn) {
-    console.log('Filter Low button clicked');
+    if (filterLowBtn) {
+        console.log('Filter Low button clicked');
 
-    filterLowBtn.addEventListener('click', () => {
-        filterLowBtn.classList.toggle('active');
-        updateJordanCards();
-    });
-}
+        filterLowBtn.addEventListener('click', () => {
+            filterLowBtn.classList.toggle('active');
+            updateJordanCards();
+        });
+    }
 
-if (filterHighBtn) {
-    console.log('Filter High button clicked');
+    if (filterHighBtn) {
+        console.log('Filter High button clicked');
 
-    filterHighBtn.addEventListener('click', () => {
-        filterHighBtn.classList.toggle('active');
-        updateJordanCards();
-    });
-}
+        filterHighBtn.addEventListener('click', () => {
+            filterHighBtn.classList.toggle('active');
+            updateJordanCards();
+        });
+    }
 
-if (filterGenderDropdown) {
-    filterGenderDropdown.addEventListener('change', () => {
-        updateJordanCards();
-    });
-}
+    if (filterGenderDropdown) {
+        filterGenderDropdown.addEventListener('change', () => {
+            updateJordanCards();
+        });
+    }
 
-if (filterShippingCheckbox) {
-    filterShippingCheckbox.addEventListener('change', () => {
-        updateJordanCards();
-    });
-}
- 
-
-
- // Función para cargar datos iniciales
- function loadInitialData() {
-     // Verificar si los datos iniciales ya se cargaron
-     if (!initialDataLoaded) {
-         updateJordanCards();
-         actualizarCantidadZapatillas();
-         initialDataLoaded = true;
-     }
- }
+    if (filterShippingCheckbox) {
+        filterShippingCheckbox.addEventListener('change', () => {
+            updateJordanCards();
+        });
+    }
+} 
  
  /// Función para cargar datos desde JSON
- function loadJsonData() {
-     fetch('jordans_data.json')
-         .then(response => response.json())
-         .then(data => {
-             jordansData = data;
-             updateJordanCards();
-             showNotification('¡Datos cargados!', 'Se han cargado nuevos datos de Jordans.', 'success');
-         })
-         .catch(error => {
-             console.error('Error fetching JSON data:', error);
-             showNotification('Error', 'Hubo un error al cargar los datos JSON.', 'error');
-         });
- }
+//  function loadJsonData() {
+//      fetch('jordans_data.json')
+//          .then(response => response.json())
+//          .then(data => {
+//              jordansData = data;
+//              updateJordanCards();
+//              showNotification('¡Datos cargados!', 'Se han cargado nuevos datos de Jordans.', 'success');
+//          })
+//          .catch(error => {
+             
+//         });
+//  }
+
+const cargarJsonData = async () => {
+    try {
+        const res = await fetch('jordans_data.json');
+        const data = await res.json();
+        console.log(data);
+        return data;
+    } catch (error) {
+        console.error('Error fetching JSON data:', error);
+        showNotification('Error', 'Hubo un error al cargar los datos JSON.', 'error');
+    }
+};
+
+// Función para crear una tarjeta de Jordan
+const renderJordan = async (filter="") => {
+    // Guardar info json
+    const dataFetch = await cargarJsonData();
+    const jordansList = document.getElementById('jordans-list');
+
+    jordansList.innerHTML = '';
+
+    dataFetch.forEach((item) => {
+        if(item.nombre.toLowerCase().includes(filter)){
+            jordansList.innerHTML += 
+            `
+                <h2>${item.nombre}</h2>
+                <img class="img-jordans" src="./images/${item.imagen}" alt="${item.nombre}">
+                <div class="jordans-info">
+                    <p>Precio: $${item.precio}</p>
+                </div>
+                <button class="btnCompra">
+                    <p>Comprar</p>
+                </button>
+            `
+        }
+        else if(item.sexo.toLowerCase()===filter){
+            jordansList.innerHTML += 
+            `
+                <h2>${item.nombre}</h2>
+                <img class="img-jordans" src="./images/${item.imagen}" alt="${item.nombre}">
+                <div class="jordans-info">
+                    <p>Precio: $${item.precio}</p>
+                </div>
+                <button class="btnCompra">
+                    <p>Comprar</p>
+                </button>
+            `
+        }
+        ;
+    });
+};
+
+searchBar.addEventListener('keyup', (event)=>{
+    if(event.key === 'Enter'){
+        const valor = searchBar.value.toLowerCase().trim();
+        renderJordan(valor)
+    }
+    
+})
+
+renderJordan();
+ 
  
 
- 
- // Función para crear una tarjeta de Jordan
- 
- function createJordanCard(jordan) {
-     const card = document.createElement('div');
-     card.classList.add('jordans-cards');
-     card.innerHTML = `
-         <h2>${jordan.nombre}</h2>
-         <img class="img-jordans" src="./images/${jordan.imagen}" alt="${jordan.nombre}">
-         <div class="jordans-info">
-             <p>Precio: $${jordan.precio}</p>
-         </div>
-         <button class="btnCompra">
-             <p>Comprar</p>
-         </button>
-     `;
-     const btnCompra = card.querySelector('.btnCompra');
-     btnCompra.addEventListener('click', () => {
-         addToCart(jordan);
-     });
- 
-     return card;
- }
  // Función para agregar un producto al carrito
  function addToCart(jordan) {
      carrito.push(jordan);
@@ -200,12 +203,6 @@ if (filterShippingCheckbox) {
  
  actualizarCantidadZapatillas();
  
- console.log('Valor de jordan:', jordan);
-
- updateJordanCards(jordan);
- 
- console.log("Cantidad de Zapatillas en el array:", data.length);
- 
  function obtenerJordanPorNombre(nombre) {
      console.log("Función obtenerJordanPorNombre activada.");
      return jordans_data.find(jordan => jordan.nombre.toLowerCase() === nombre.toLowerCase());
@@ -215,7 +212,5 @@ if (filterShippingCheckbox) {
      // Lógica para mostrar el carrito
      console.table('Mostrando el carrito...');
  }
-  
- jordanFakeTrue([]);
- mostrarCarrito();
- loadInitialData();
+
+ mostrarCarrito()

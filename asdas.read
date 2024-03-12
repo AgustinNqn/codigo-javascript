@@ -1,11 +1,19 @@
- // Función para actualizar las tarjetas de Jordans
-
-//  function updateJordanCards() {
-//      // Elimina las cards existentes antes de agregar las nuevas
-//      jordansList.innerHTML = '';
+function createJordanCard(filtro) {
+     const card = document.createElement('div');
+     card.classList.add('jordans-cards');
+     card.innerHTML = `
+         <h2>${filtro.nombre}</h2>
+         <img class="img-jordans" src="./images/${filtro.imagen}" alt="${filtro.nombre}">
+         <div class="jordans-info">
+             <p>Precio: $${filtro.precio}</p>
+         </div>
+         <button class="btnCompra">
+             <p>Comprar</p>
+         </button>
+     `;
+     const btnCompra = card.querySelector('.btnCompra');
+     btnCompra.addEventListener('click', () => {
+         addToCart(jordan);
+     });
  
-//      jordansData.forEach(jordan => {
-//          const card = createJordanCard(jordan);
-//          jordansList.appendChild(card);
-//      });
-//  }
+     return card;
